@@ -52,6 +52,7 @@ console.log(circ('hello'));
 Wait a second! Where is the type we defined right after "diameter"? Well, TS will check the types in compile time, not in run time, that's why you don't see the type on the JS equivalent code.
 
 ## 📦 More content
-If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #3 - Type Basics](https://www.youtube.com/watch?v=iTZ1-85I77c&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=3)
+If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #3 - Type Basics](https://www.youtube.com/watch?v=0DzDqtcxnz0&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=3)
+
 
 Back to the [main branch](https://github.com/Henrique-Peixoto/typescript-the-net-ninja).
