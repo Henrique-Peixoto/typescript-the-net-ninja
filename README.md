@@ -17,7 +17,7 @@ We are going to use the following technologies along this tutorial:
 ## 🤔 The Lessons
 This tutorial is intended for people who are having their first contact with TypeScript. Down below you can check every class (each one of them have their own branch), also, the code will have comments to guide you through of what is going on.
 
-1️ [Introduction & Setup](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-1)
+1️ [Introduction & Setup](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-1)</br>
 2️⃣ [Compiling TypeScript](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-2)
 
 ## 📝 License
