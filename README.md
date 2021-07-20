@@ -30,3 +30,5 @@ npm install -g typescript
 (That's why you had to install NodeJS, so you could use NPM). This command will install Typescript globally. That's it! You are good to go now!
 
 If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #1 - Introduction & Setup](https://www.youtube.com/watch?v=2pZmKW9-I_k&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=1)
+
+Back to the [main branch](https://github.com/Henrique-Peixoto/typescript-the-net-ninja).
