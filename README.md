@@ -7,12 +7,13 @@
 - Supports modern features (arrow functions, let, const);
 - Extre features (generics, interfaces, tuples, etc.).
 
-## But wait! First you should be familiar with the following Javascript concepts:
-- Arrow functions;
-- The DOM;
-- Classes.
+## But wait❗
+First you should be familiar with the following Javascript concepts:
+- [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions);
+- [The DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model);
+- [Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes).
 
-If you are not familiar with those concepts, here is a playlist, also produced by The Net Ninja, that should help you out. https://www.youtube.com/playlist?list=PL4cUxeGkcC9haFPT7J25Q9GRB_ZkFrQAc
+If you are not familiar with those concepts, here is a playlist, also produced by The Net Ninja, that should help you out. [The Net Ninja TypeScript Playlist](https://www.youtube.com/playlist?list=PL4cUxeGkcC9haFPT7J25Q9GRB_ZkFrQAc).
 
 Now that your comfortable with the concepts shown above, let's move on!
 
@@ -23,7 +24,7 @@ I will be using VSCode to write my code. VSCode is a versatile text editor with 
 After that, you are going to need to install the Typescript compiler (see, browsers don't understand Typescript, so the compiler will transpile the TypeScript code into JavaScript code). To install it, open up a terminal (I'm using Windows, so there might be a different command for your OS) and write:
 
 ```bash
-  npm install -g typescript
+npm install -g typescript
 ```
 
 (That's why you had to install NodeJS, so you could use NPM). This command will install Typescript globally. That's it! You are good to go now!
