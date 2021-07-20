@@ -1,31 +1,40 @@
+# TypeScript Tutorial #2 - Compiling TypeScript
 
-# TypeScript Tutorial #1 - Introduction & Setup
+## VSCode extensions
+If you followed the installation tutorial on the first lesson, you should have VSCode installed on your computer. I am saying this because I am going to use a VSCode extension called [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) (which I recommend you to install as well).
 
-## Main benefits of using Typescript:
-- Alternative to Javascript (superset);
-- Allows us to use strict types;
-- Supports modern features (arrow functions, let, const);
-- Extre features (generics, interfaces, tuples, etc.).
+With Live Server you will be able to run your HTML file on the browser without having to refresh the page every time you save your code at VSCode.
 
-## But wait! First you should be familiar with the following Javascript concepts:
-- Arrow functions;
-- The DOM;
-- Classes.
+## Class content
+The extension of a TypeScript file is ".ts". You will notice that TypeScript is very similar to JavaScript, mostly because TS is an extension of JS.
 
-If you are not familiar with those concepts, here is a playlist, also produced by The Net Ninja, that should help you out. https://www.youtube.com/playlist?list=PL4cUxeGkcC9haFPT7J25Q9GRB_ZkFrQAc
-
-Now that your comfortable with the concepts shown above, let's move on!
-
-You will need to install NodeJS in order to run the code, so click [here](https://nodejs.org/en/) and download the LTS version.
-
-I will be using VSCode to write my code. VSCode is a versatile text editor with built-in TypeScript support, so I strongly recommend you to use it as well. You can download it right [here](https://code.visualstudio.com/).
-
-After that, you are going to need to install the Typescript compiler (see, browsers don't understand Typescript, so the compiler will transpile the TypeScript code into JavaScript code). To install it, open up a terminal (I'm using Windows, so there might be a different command for your OS) and write:
-
+### Compiling TypeScript
+In order for the browser to understand TypeScript code, it must be converted to JavaScript code, we can do this by typing 
 ```bash
-  npm install -g typescript
+tsc <file_to_be_compiled>.ts <file_that_will_recieve_the_ts_compiled>
 ```
+Here, "tsc" stands for TypeScript Compiler, which you installed in the last lesson (right?), the two arguments have self explanatory names.
+But here is something nice know, if you have a file called "sandbox.ts" and another file called "sandbox.js", instead of doing 
+```bash
+tsc sandbox.ts sandbox.js
+```
+you could just type
+```bash
+tsc sandbox.ts
+```
+this will create a JS file with the same name of the TS file, except for the extension.
 
-(That's why you had to install NodeJS, so you could use NPM). This command will install Typescript globally. That's it! You are good to go now!
+But this is kind of boring, because every time you change your TS you have to rerun the command above. Worry no more! Instead, you can just run the following command:
+```bash
+tsc sandbox.ts -w
+```
+The "-w" stands for "watching", now, every time you update your TS code it will be automatically converted into JS code.
 
-If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #1 - Introduction & Setup](https://www.youtube.com/watch?v=2pZmKW9-I_k&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=1)
+## The compiled code
+On the left you can see the TS code, on the right you can see the TS code converted into JS code:
+
+
+## 📦 More content
+If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #2 - Compiling TypeScript](https://www.youtube.com/watch?v=iTZ1-85I77c&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=2)
+
+Back to the [main branch](https://github.com/Henrique-Peixoto/typescript-the-net-ninja).
