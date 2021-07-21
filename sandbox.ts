@@ -1,26 +1,35 @@
-const names = ['Gandalf', 'Saruman', 'Radagast'];
-names.push('Blue mage');
-// names[0] = 3;
+// Explicit types
+let character: string;
+let age: number;
+let isLoggedIn: boolean;
 
-const mixed = ['First string', 1, 2, 'Second string', 3];
-mixed.push('Third string');
-mixed.push(4);
-mixed[0] = 1;
-// mixed.push(false);
+// age = '35';
 
-let driver = {
-  name: 'Charles Leclerc',
-  team: 'Ferrari',
-  winnings: 2
-};
+// Arrays
+let cars: string[];
 
-driver.name = 'Carlos Sainz';
-driver.winnings = 0;
-// driver.winnings = '0';
-// driver.birthplace = ['Spain', 'South Region'];
+cars.push('Lightning McQueen');
 
-driver = {
-  name: 'Max Verstappen',
-  team: 'Red Bull',
-  winnings: 11,
+// Union types
+let id: string | number;
+id = '123';
+id = 123;
+// id = false;
+
+let boats: (string | number | boolean)[] = [];
+boats.push('Ship');
+boats.push(4);
+boats.push(true);
+
+// Objects
+let ninjaOne: object;
+ninjaOne = {name: 'Naruto', age: 33};
+ninjaOne = ['HI'];
+
+let ninjaTwo: {
+  name: string,
+  age: number,
+  isHidden: boolean
 }
+
+ninjaTwo = {name: 'Sasuke', age: 34, isHidden: false};
