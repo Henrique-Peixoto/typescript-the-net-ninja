@@ -22,6 +22,7 @@ This tutorial is intended for people who are having their first contact with Typ
 3️⃣ [Type Basics](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-3)</br>
 4️⃣ [Objects & Arrays](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-4)</br>
 5️⃣ [Explicit Types](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-5)</br>
+6️⃣ [Dynamic (any) Types](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-6)</br>
 
 ## 📝 License
 This repository is under the [MIT](LICENSE)
