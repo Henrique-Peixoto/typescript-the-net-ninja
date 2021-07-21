@@ -1,108 +1,67 @@
-# TypeScript Tutorial #4 - Objects & Arrays
+# TypeScript Tutorial #5 - Explicit Types
+
+## Simple variables
+If you want to declare a variable but not to initialize it, you can do as follows
+```ts
+let character: string;
+let age: number;
+let isLoggedIn: boolean;
+```
+Again, if you try to assign an incorrect value to a variable, for example
+```ts
+age = '35';
+```
+In this case you will get
+>Type 'string' is not assignable to type 'number'.
 
 ## Arrays
-If you create an array like this
+The same idea above goes for arrays
 ```ts
-const names = ['Gandalf', 'Saruman', 'Radagast'];
+let cars: string[];
 ```
-you can add new elements to it just by doing
+Here you are saying that <i>cars</i> is an array of string array. One thing to notice is that you are not initializing the array, so when you try to push something into it
 ```ts
-names.push('Blue mage');
+cars.push('Lightning McQueen');
 ```
-but if you try to add a number, for example
-```ts
-namus.push(3);
-```
-you will get the following error message
->Argument of type 'number' is not assignable to parameter of type 'string'.
+That is what you will receive
+>Uncaught TypeError: cars is undefined
 
-Even with other syntax
+One simple way to solve this is just initializing the array with an empty array.
 ```ts
-names[0] = 3;
+let cars: string[] = [];
 ```
-Results in
->Type 'number' is not assignable to type 'string'.
 
-But what if you want to have an array with numbers and strings?
-
-You can achieve that by declaring an array with numbers and string in it
+## Union types
+You can declare a variable expliciting the types it can hold
 ```ts
-const mixed = ['First string', 1, 2, 'Second string', 3];
+let id: string | number;
 ```
-And the following operations would be allowed
+If you are declaring an array with union types, you have to use parentheses as shown below
 ```ts
-mixed.push('Third string');
-mixed.push(4);
-mixed[0] = 0;
+let cars: (number | string)[] = [];
 ```
-You can see that in the last operation the value <i>'First string'</i> got replaced with the value <i>0</i>, which is perfectly normal in this case.
-
-One thing you would not be able to do is to push a, let's say, <i>boolean</i> into the array. This would raise the following error
->Argument of type 'boolean' is not assignable to parameter of type 'string | number'.
+And again, you can only assign the proper values to these variables.
 
 ## Objects
-Let's create the <i>driver</i> object
+This is how you can specifie that a variable is a object
 ```ts
-let driver = {
-  name: 'Charles Leclerc',
-  team: 'Ferrari',
-  winnings: 2
-};
+let ninjaOne: object;
+ninjaOne = {name: 'Naruto', age: 33};
 ```
-The following operations are all valid
+Here is something tricky. You can assign an array to an object, basically because an array is an object
 ```ts
-driver.winnings = 3;
-driver.name = 'Carlos Sainz'
+let ninjaOne: object;
+ninjaOne = ['Hi'];
 ```
-But the following operations are not valid
+You can be much more specific when declaring an object
 ```ts
-driver.winnings = '25';
-```
->Type 'string' is not assignable to type 'number'.
-```ts
-driver.birthplace = ['Spain', 'South Region'];
-```
->Property 'birthplace' does not exist on type '{ name: string; team: string; winnings: number; }'.
-
-You can assign a new value to an existing object. But there are a few things you should not do
-* You can't add new fields;
-* You can't remove fields;
-* The fields must preserve their original name and type.
-Let's see an example (here we are changing the <i>driver</i> object)
-```ts
-driver = {
-  name: 'Max Verstappen',
-  team: 'Red Bull',
-  winnings: 11
+let ninjaTwo: {
+  name: string,
+  age: number,
+  isHidden: boolean
 }
 ```
-Take a look at the errors that can happen if you don't follow the rules listed above
-```ts
-driver = {
-  name: 'Max Verstappen',
-  winnings: 11
-}
-```
->Property 'team' is missing in type '{ name: string; winnings: number; }' but required in type '{ name: string; team: string; winnings: number; }'.
-```ts
-driver = {
-  name: 'Max Verstappen',
-  team: 'Red Bull',
-  winnings: 11,
-  age: 22
-}
-```
->Type '{ name: string; team: string; winnings: number; age: number; }' is not assignable to type '{ name: string; team: string; winnings: number; }'.
->Object literal may only specify known properties, and 'age' does not exist in type '{ name: string; team: string; winnings: number; }'.
-```ts
-driver = {
-  name: 'Max Verstappen',
-  team: 'Red Bull',
-  winnings: '11'
-}
->Type 'string' is not assignable to type 'number'.ts(2322)
->sandbox.ts(14, 3): The expected type comes from property 'winnings' which is declared here on type '{ name: string; team: string; winnings: number; }'
-
+And again, when giving this object a value you can't add new fiels, remove fields or change their names.
 ## 📦 More content
 If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #4 - Objects & Arrays](https://www.youtube.com/watch?v=157NopQ-chU&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=4)
 
