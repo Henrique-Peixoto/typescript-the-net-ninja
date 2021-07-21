@@ -11,10 +11,10 @@ The extension of a TypeScript file is ".ts". You will notice that TypeScript is 
 ### Compiling TypeScript
 In order for the browser to understand TypeScript code, it must be converted to JavaScript code, we can do this by typing 
 ```bash
-tsc <file_to_be_compiled>.ts <file_that_will_recieve_the_ts_compiled>.js
+tsc <file_to_be_compiled>.ts <file_that_will_receive_the_ts_compiled>.js
 ```
 Here, "tsc" stands for TypeScript Compiler, which you installed in the last lesson (right?), the two arguments have self explanatory names.
-But here is something nice know, if you have a file called "sandbox.ts" and another file called "sandbox.js", instead of doing 
+But here is something nice to know, if you have a file called "sandbox.ts" and another file called "sandbox.js", instead of doing 
 ```bash
 tsc sandbox.ts sandbox.js
 ```
@@ -24,7 +24,7 @@ tsc sandbox.ts
 ```
 this will create a JS file with the same name of the TS file, except for the extension.
 
-But this is kind of boring, because every time you change your TS you have to rerun the command above. Worry no more! Instead, you can just run the following command:
+But this is kind of boring, because every time you change your TS code you have to rerun the command above. Worry no more! Instead, you can just run the following command:
 ```bash
 tsc sandbox.ts -w
 ```
