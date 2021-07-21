@@ -63,6 +63,6 @@ let ninjaTwo: {
 ```
 And again, when giving this object a value you can't add new fiels, remove fields or change their names.
 ## 📦 More content
-If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #4 - Objects & Arrays](https://www.youtube.com/watch?v=157NopQ-chU&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=4)
+If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #5 - Explicit Types](https://www.youtube.com/watch?v=__92ek8Xh4o&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=5)
 
 Back to the [main branch](https://github.com/Henrique-Peixoto/typescript-the-net-ninja).
