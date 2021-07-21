@@ -1,13 +1,22 @@
-var character = 'mario';
-var age = 30;
-var isBlackBelt = false;
-// character = 20;
-character = 'luigi';
-// age = 'yoshi';
-age = 40;
-// isBlackBelt = 'mario';
-isBlackBelt = true;
-var circ = function (diameter) {
-    return diameter * Math.PI;
+var names = ['Gandalf', 'Saruman', 'Radagast'];
+names.push('Blue mage');
+// names[0] = 3;
+var mixed = ['First string', 1, 2, 'Second string', 3];
+mixed.push('Third string');
+mixed.push(4);
+mixed[0] = 1;
+// mixed.push(false);
+var driver = {
+    name: 'Charles Leclerc',
+    team: 'Ferrari',
+    winnings: 2
 };
-console.log(circ("5"));
+driver.name = 'Carlos Sainz';
+driver.winnings = 0;
+// driver.winnings = '0';
+// driver.birthplace = ['Spain', 'South Region'];
+driver = {
+    name: 'Max Verstappen',
+    team: 'Red Bull',
+    winnings: 11
+};

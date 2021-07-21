@@ -1,18 +1,26 @@
-let character = 'mario';
-let age = 30;
-let isBlackBelt = false;
+const names = ['Gandalf', 'Saruman', 'Radagast'];
+names.push('Blue mage');
+// names[0] = 3;
 
-// character = 20;
-character = 'luigi';
+const mixed = ['First string', 1, 2, 'Second string', 3];
+mixed.push('Third string');
+mixed.push(4);
+mixed[0] = 1;
+// mixed.push(false);
 
-// age = 'yoshi';
-age = 40;
+let driver = {
+  name: 'Charles Leclerc',
+  team: 'Ferrari',
+  winnings: 2
+};
 
-// isBlackBelt = 'mario';
-isBlackBelt = true;
+driver.name = 'Carlos Sainz';
+driver.winnings = 0;
+// driver.winnings = '0';
+// driver.birthplace = ['Spain', 'South Region'];
 
-const circ = (diameter: number) => {
-  return diameter * Math.PI;
+driver = {
+  name: 'Max Verstappen',
+  team: 'Red Bull',
+  winnings: 11,
 }
-
-console.log(circ("5"));
