@@ -20,6 +20,7 @@ This tutorial is intended for people who are having their first contact with Typ
 1️ [Introduction & Setup](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-1)</br>
 2️⃣ [Compiling TypeScript](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-2)</br>
 3️⃣ [Type Basics](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-3)</br>
+4️⃣ [Objects & Arrays](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-4)</br>
 
 ## 📝 License
 This repository is under the [MIT](LICENSE)
