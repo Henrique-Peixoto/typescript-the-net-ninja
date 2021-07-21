@@ -100,6 +100,7 @@ driver = {
   team: 'Red Bull',
   winnings: '11'
 }
+```
 >Type 'string' is not assignable to type 'number'.ts(2322)
 >sandbox.ts(14, 3): The expected type comes from property 'winnings' which is declared here on type '{ name: string; team: string; winnings: number; }'
 
