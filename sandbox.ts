@@ -1,35 +1,32 @@
-// Explicit types
-let character: string;
-let age: number;
-let isLoggedIn: boolean;
+// Simple variables
+let age: any = 25;
+age = 'Hello';
+age = false;
 
-// age = '35';
-
-// Arrays
-let cars: string[];
-
-cars.push('Lightning McQueen');
-
-// Union types
-let id: string | number;
-id = '123';
-id = 123;
-// id = false;
-
-let boats: (string | number | boolean)[] = [];
-boats.push('Ship');
-boats.push(4);
-boats.push(true);
 
 // Objects
-let ninjaOne: object;
-ninjaOne = {name: 'Naruto', age: 33};
-ninjaOne = ['HI'];
+let book: {
+  name: any,
+  pages: any
+};
 
-let ninjaTwo: {
-  name: string,
-  age: number,
-  isHidden: boolean
+book = {
+  name: 'The Hobbit',
+  pages: 353
+};
+
+book = {
+  name: 353,
+  pages: 'The Hobbit'
+};
+
+// Any and explicit types
+let ninja: {
+  name: any,
+  age: number
 }
 
-ninjaTwo = {name: 'Sasuke', age: 34, isHidden: false};
+ninja = {
+  name: true,
+  age: 25
+}

@@ -1,23 +1,20 @@
-// Explicit types
-var character;
-var age;
-var isLoggedIn;
-// age = '35';
-// Arrays
-var cars;
-cars.push('Lightning McQueen');
-// Union types
-var id;
-id = '123';
-id = 123;
-// id = false;
-var boats = [];
-boats.push('Ship');
-boats.push(4);
-boats.push(true);
+// Simple variables
+var age = 25;
+age = 'Hello';
+age = false;
 // Objects
-var ninjaOne;
-ninjaOne = { name: 'Naruto', age: 33 };
-ninjaOne = ['HI'];
-var ninjaTwo;
-ninjaTwo = { name: 'Sasuke', age: 34, isHidden: false };
+var book;
+book = {
+    name: 'The Hobbit',
+    pages: 353
+};
+book = {
+    name: 353,
+    pages: 'The Hobbit'
+};
+// Any and explicit types
+var ninja;
+ninja = {
+    name: true,
+    age: 25
+};
