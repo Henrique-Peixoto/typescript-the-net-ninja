@@ -1,68 +1,63 @@
-# TypeScript Tutorial #5 - Explicit Types
-
-## Simple variables
-If you want to declare a variable but not to initialize it, you can do as follows
+# TypeScript Tutorial #6 - Dynamic (any) Types
+You can define a variable without a specific type, this kind of turns it back to a simple JS variable, because you can assign <i>any</i> value to this variable.
 ```ts
-let character: string;
-let age: number;
-let isLoggedIn: boolean;
+let age: any;
 ```
-Again, if you try to assign an incorrect value to a variable, for example
+With this you could assign to <i>age</i> a string, a boolean, a number, etc.
 ```ts
-age = '35';
+age = '25';
+age = 25;
 ```
-In this case you will get
->Type 'string' is not assignable to type 'number'.
-
-## Arrays
-The same idea above goes for arrays
+To initialize a <i>any</i> variable, you can do
 ```ts
-let cars: string[];
+let age: any = 25;
 ```
-Here you are saying that <i>cars</i> is an array of string array. One thing to notice is that you are not initializing the array, so when you try to push something into it
+And then assign any other value you want. Here, <i>25</i> does not mean that <i>age</i> has the type <i>number</i>, it's just a initialization value.
+This can also be done with objects
 ```ts
-cars.push('Lightning McQueen');
-```
-That is what you will receive
->Uncaught TypeError: cars is undefined
-
-One simple way to solve this is just initializing the array with an empty array.
-```ts
-let cars: string[] = [];
-```
-
-## Union types
-You can declare a variable expliciting the types it can hold
-```ts
-let id: string | number;
-```
-If you are declaring an array with union types, you have to use parentheses as shown below
-```ts
-let cars: (number | string)[] = [];
-```
-And again, you can only assign the proper values to these variables.
-
-## Objects
-This is how you can specifie that a variable is a object
-```ts
-let ninjaOne: object;
-ninjaOne = {name: 'Naruto', age: 33};
-```
-Here is something tricky. You can assign an array to an object, basically because an array is an object
-```ts
-let ninjaOne: object;
-ninjaOne = ['Hi'];
-```
-You can be much more specific when declaring an object
-```ts
-let ninjaTwo: {
-  name: string,
-  age: number,
-  isHidden: boolean
+let book: {
+  name: any,
+  pages: any
 }
 ```
-And again, when giving this object a value you can't add new fiels, remove fields or change their names.
+So, for the object above you can assign the following values without having problems
+```ts
+book = {
+  name: 'The Hobbit',
+  pages: 353
+}
+
+// or
+
+book = {
+  name: 353,
+  pages: 'The Hobbit'
+}
+```
+You can even define objects with <i>any</i> and explicit types all togheter
+```ts
+let ninja: {
+  name: any,
+  age: number
+}
+```
+With this, you could have the following value
+```ts
+ninja = {
+  name: true,
+  age: 25
+}
+
+// or
+
+ninja = {
+  name: 'Ryu',
+  age: 32
+}
+```
+Here, you also have to respect the fields that have a well defined type. Even though a field of an object has the type <i>any</i>, when you assign a value to this object, you must give values to all of it's fields.
+
 ## 📦 More content
-If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #4 - Objects & Arrays](https://www.youtube.com/watch?v=157NopQ-chU&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=4)
+If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #6 - Dynamic (any) Types](https://www.youtube.com/watch?v=nm9P2vnS9_I&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=6)
 
 Back to the [main branch](https://github.com/Henrique-Peixoto/typescript-the-net-ninja).
