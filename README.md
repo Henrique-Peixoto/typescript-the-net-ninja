@@ -25,7 +25,7 @@ This tutorial is intended for people who are having their first contact with Typ
 6️⃣ [Dynamic (any) Types](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-6)</br>
 7️⃣ [Better Workflow & tsconfig](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-7)</br>
 8️ [Function Basics](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-8)</br>
-9️ []()
+9️ [Type Aliases](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-9)</br>
 
 ## 📝 License
 This repository is under the [MIT](LICENSE)
