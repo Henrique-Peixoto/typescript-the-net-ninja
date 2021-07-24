@@ -1,63 +1,52 @@
-# TypeScript Tutorial #6 - Dynamic (any) Types
-You can define a variable without a specific type, this kind of turns it back to a simple JS variable, because you can assign <i>any</i> value to this variable.
-```ts
-let age: any;
-```
-With this you could assign to <i>age</i> a string, a boolean, a number, etc.
-```ts
-age = '25';
-age = 25;
-```
-To initialize a <i>any</i> variable, you can do
-```ts
-let age: any = 25;
-```
-And then assign any other value you want. Here, <i>25</i> does not mean that <i>age</i> has the type <i>number</i>, it's just a initialization value.
-This can also be done with objects
-```ts
-let book: {
-  name: any,
-  pages: any
-}
-```
-So, for the object above you can assign the following values without having problems
-```ts
-book = {
-  name: 'The Hobbit',
-  pages: 353
-}
+# TypeScript Tutorial #7 - Better Workflow & tsconfig
+It's very common to have the folders <i>public</i> and <i>src</i> in a project. What we want to become public, is our TS code. In order to do that, we have to convert the TS code into JS code, let's see how this can be done with <i>tsconfig.json</i>.
 
-// or
-
-book = {
-  name: 353,
-  pages: 'The Hobbit'
-}
+To create the <i>tsconfig.json</i> file, use the command
+```bash
+tsc --init
 ```
-You can even define objects with <i>any</i> and explicit types all togheter
-```ts
-let ninja: {
-  name: any,
-  age: number
-}
-```
-With this, you could have the following value
-```ts
-ninja = {
-  name: true,
-  age: 25
-}
+You will notice that now you have a new file called <i>tsconfig.json</i>. This file is used for making a lot of configurations on how TS code is compiled, among other things you can set.
 
-// or
-
-ninja = {
-  name: 'Ryu',
-  age: 32
-}
+Open this file you just created and change the following lines from
+```json
+"outDir": "./",             /* Redirect output structure to the directory. */
+"rootDir": "./",            /* Specify the root directory of input files. Use to control the output 
 ```
-Here, you also have to respect the fields that have a well defined type. Even though a field of an object has the type <i>any</i>, when you assign a value to this object, you must give values to all of it's fields.
+to
+```json
+"outDir": "./public",       /* Redirect output structure to the directory. */
+"rootDir": "./src",         /* Specify the root directory of input files. Use to control the output 
+```
+This means that every TS code that is inside the <i>src</i> folder will be compiled and saved in the <i>public</i> folder.
+Now, if you type
+```bash
+tsc
+```
+on the terminal, every TS file that is in the <i>src</i> folder will be compiled as a JS file in the <i>public</i> folder.
+
+But there is still something going wrong. If you create a TS file outside of the <i>src</i> folder and type the command <i>tsc</i> on the terminal, you will see the following error message on the terminal
+```bash
+henri@LAPTOP-VFSIPJDF MINGW64 ~/programacao/the-net-ninja/typescript-the-net-ninja (lesson-6)
+$ tsc
+error TS6059: File 'C:/project-path/typescript-the-net-ninja/app.ts' is not under 'rootDir' 'C:/project-path/typescript-the-net-ninja/src'. 'rootDir' is expected to contain all source files.
+  The file is in the program because:
+    Matched by include pattern '**/*' in 'C:/project-path/typescript-the-net-ninja/tsconfig.json'     
+
+Found 1 error.
+``` 
+This error means that you have a TS file that is not in the <i>src</i> folder.
+
+To specifie that you just want the files that are in the <i>src</i> folder to be compiled, you have to specifie which folders will be compiled in the <i>tsconfig.json</i> file.
+
+Right before the last curly braces, write the following 
+```json
+"include": ["src"]
+```
+Run the <i>tsc</i> command again (remember to keep the TS file out of the <i>src</i> folder) and now you should see in the <i>public</i> folder only the JS files generated from the TS files in the <i>src</i> folder.
+
+There is much more you can do with the <i>tsconfig.json</i> file. For more details, see the [documentation](https://www.typescriptlang.org/docs/handbook/compiler-options-in-msbuild.html#using-a-tsconfigjson).
 
 ## 📦 More content
-If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #6 - Dynamic (any) Types](https://www.youtube.com/watch?v=nm9P2vnS9_I&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=6)
+If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #7 - Better Workflow & tsconfig](https://www.youtube.com/watch?v=Y4IiQY9dNRA&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=7)
 
 Back to the [main branch](https://github.com/Henrique-Peixoto/typescript-the-net-ninja).
