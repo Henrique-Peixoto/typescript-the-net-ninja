@@ -19,7 +19,7 @@ The same idea above goes for arrays
 ```ts
 let cars: string[];
 ```
-Here you are saying that <i>cars</i> is an array of string array. One thing to notice is that you are not initializing the array, so when you try to push something into it
+Here you are saying that <i>cars</i> is a string array. One thing to notice is that you are not initializing the array, so when you try to push something into it
 ```ts
 cars.push('Lightning McQueen');
 ```
@@ -61,7 +61,7 @@ let ninjaTwo: {
   isHidden: boolean
 }
 ```
-And again, when giving this object a value you can't add new fiels, remove fields or change their names.
+And again, when giving this object a value, you can't add new fields, remove existing fields or change their names.
 ## 📦 More content
 If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #5 - Explicit Types](https://www.youtube.com/watch?v=__92ek8Xh4o&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=5)
 
