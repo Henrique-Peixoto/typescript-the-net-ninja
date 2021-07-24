@@ -27,13 +27,15 @@ book = {
   pages: 353
 }
 
-// or
+// and then change it to
 
 book = {
   name: 353,
   pages: 'The Hobbit'
 }
 ```
+Because of that, you have to be very careful not to mistake the values that the fields should receive. Use the dynamic type as less as you can.
+
 You can even define objects with <i>any</i> and explicit types all togheter
 ```ts
 let ninja: {
