@@ -11,21 +11,21 @@ names.push('Blue mage');
 ```
 but if you try to add a number, for example
 ```ts
-namus.push(3);
+names.push(3);
 ```
 you will get the following error message
 >Argument of type 'number' is not assignable to parameter of type 'string'.
 
-Even with other syntax
+Even with this syntax
 ```ts
 names[0] = 3;
 ```
 Results in
 >Type 'number' is not assignable to type 'string'.
 
-But what if you want to have an array with numbers and strings?
+But, what if you want to have an array with numbers and strings?
 
-You can achieve that by declaring an array with numbers and string in it
+You can achieve that by declaring an array with numbers and strings in it
 ```ts
 const mixed = ['First string', 1, 2, 'Second string', 3];
 ```
@@ -37,7 +37,7 @@ mixed[0] = 0;
 ```
 You can see that in the last operation the value <i>'First string'</i> got replaced with the value <i>0</i>, which is perfectly normal in this case.
 
-One thing you would not be able to do is to push a, let's say, <i>boolean</i> into the array. This would raise the following error
+One thing you would not be able to do is to push a, let's say, <i>boolean</i> into this array. This would raise the following error
 >Argument of type 'boolean' is not assignable to parameter of type 'string | number'.
 
 ## Objects
