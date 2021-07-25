@@ -1,11 +1,11 @@
 # TypeScript Tutorial #7 - Better Workflow & tsconfig
-It's very common to have the folders <i>public</i> and <i>src</i> in a project. What we want to become public, is our TS code. In order to do that, we have to convert the TS code into JS code, let's see how this can be done with <i>tsconfig.json</i>.
+It's very common to have the folders <i>public</i> and <i>src</i> in a project. One of the things we want to become public, is our TS code. In order to do that, we have to convert the TS code into JS code, let's see how this can be done with <i>tsconfig.json</i>.
 
 To create the <i>tsconfig.json</i> file, use the command
 ```bash
 tsc --init
 ```
-You will notice that now you have a new file called <i>tsconfig.json</i>. This file is used for making a lot of configurations on how TS code is compiled, among other things you can set.
+You will notice that now you have a new file called <i>tsconfig.json</i>. This file is used for making a lot of settings on how TS code is compiled, among other things you can set.
 
 Open this file you just created and change the following lines from
 ```json
@@ -24,7 +24,7 @@ tsc
 ```
 on the terminal, every TS file that is in the <i>src</i> folder will be compiled as a JS file in the <i>public</i> folder.
 
-But there is still something going wrong. If you create a TS file outside of the <i>src</i> folder and type the command <i>tsc</i> on the terminal, you will see the following error message on the terminal
+But there is still something going wrong. If you create a TS file outside of the <i>src</i> folder, in this case the <i>app.ts</i> file, and type the command <i>tsc</i> on the terminal, you will see the following error message on the terminal
 ```bash
 henri@LAPTOP-VFSIPJDF MINGW64 ~/programacao/the-net-ninja/typescript-the-net-ninja (lesson-6)
 $ tsc
