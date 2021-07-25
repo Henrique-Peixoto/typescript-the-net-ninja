@@ -26,6 +26,7 @@ This tutorial is intended for people who are having their first contact with Typ
 7️⃣ [Better Workflow & tsconfig](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-7)</br>
 8️ [Function Basics](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-8)</br>
 9️ [Type Aliases](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-9)</br>
+1️0️⃣ [Function Signatures](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/pull/10)</br>
 
 ## 📝 License
 This repository is under the [MIT](LICENSE)
