@@ -1,49 +1,23 @@
-// Function signatures
+// Saying to TS that we know that a variable is not null
+const anchor = document.querySelector('a')!;
 
-// Example 1 - Function signature
-let greet: (a: string, b: string) => void;
+console.log(anchor.href);
 
-greet = (name: string, greeting: string): void => {
-  console.log(`${name} says ${greeting}`);
-}
+// Type casting
+const form = document.querySelector('.new-item-form') as HTMLFormElement;
 
-// Example 2 - Implicity return type
-let calc: (a: number, b: number, c: string) => number;
+const type = document.querySelector('#type') as HTMLSelectElement;
+const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
+const details = document.querySelector('#details') as HTMLInputElement;
+const amount = document.querySelector('#amount') as HTMLInputElement;
 
-calc = (numberOne: number, numberTwo: number, action: string) => {
-  if(action === 'add'){
-    return numberOne + numberTwo;
-  }else{
-    return numberOne - numberTwo;
-  }
-}
+form.addEventListener('submit', (e: Event) => {
+  e.preventDefault();
 
-// Example 3 - Function signatures with objects
-let logDetails: (obj: {name: string, age: number}) => void;
-
-logDetails = (ninja: {name: string, age: number}) => {
-  console.log(`${ninja.name} is ${ninja.age} years old`);
-}
-
-// with type aliases
-type person = {name: string, age: number};
-
-logDetails = (ninja: person) => {
-  console.log(`${ninja.name} is ${ninja.age} years old`);  
-}
-
-// Example 4 - Function signature with optional parameters
-let showCarDetails: (name: string, year: number, hasFourWheels?: boolean) => void;
-
-showCarDetails = (name: string, year: number) => {
-  console.log(`The ${name} was first produced in ${year}`);
-}
-
-showCarDetails = (name: string, year: number, hasFourWheels?: boolean) => {
-  console.log(`The ${name} was first produced in ${year}`);
-  if(hasFourWheels){
-    console.log('It has four wheels.');
-  }else{
-    console.log('It doesn\'t has four wheels.');
-  }
-}
+  console.log(
+    type.value,
+    tofrom.value,
+    details.value,
+    amount.valueAsNumber
+  );
+})
