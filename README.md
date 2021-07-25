@@ -1,85 +1,57 @@
-# TypeScript Tutorial #10 - Function Signatures
+# TypeScript Tutorial #11 - The DOM & Type Casting
 
-## Function signatures
-A <i>function signature</i> is a way to explicitly say how many parameters and their type a function should receive.
+## Exclamation point operator
+When you try to grab a DOM element and, for example, try to output one of it's properties, like this:
 ```ts
-let greet: (a: string, b: string) => void;
+const anchor = document.querySelector('a');
+
+console.log(anchor.href);
 ```
-Now, define a function within the pattern in <i>greet</i>.
+TS will say:
+>Object is possibly 'null'.ts(2531)
+
+To explicity say to TS that you know that a variable is not null you can write a <i>exclamation point</i> after selecting a DOM element:
 ```ts
-greet = (name: string, greeting: string) => {
-  console.log(`${name} says ${greeting}`);
-}
+const anchor = document.querySelector('a')!;
 ```
-If a parameter receives a wrong type, the following message is shown:
+If you hover over the <i>anchor</i> constant, you will see:
+>onst anchor: HTMLAnchorElement
+TypeScript has a specific type for every HTML element.
+
+## Type Casting 
+On the <i>index.html</i> file there is a <i>form</i> element. If you select that element using:
 ```ts
-greet = (name: number, greeting: string) => {
-  console.log(`${name} says ${greeting}`);
-}
+const form = documento.querySelector('form');
 ```
->Type '(name: number, greeting: string) => void' is not assignable to type '(a: string, b: string) => void'.
->  Types of parameters 'name' and 'a' are incompatible.
->    Type 'string' is not assignable to type 'number'.ts(2322)
-
-Notice that the parameters names in the signature don't need to match the parameters name on the declaration, only the types have to be the same.
-
-## Implicity return type
-Although the function signature has an explicit return type, the function declaration doesn't need to:
+TypeScript will know, because of type inference, that the <i>form</i> constant is a <i>HTMLFormElement</i>. But the form element on the <i>index.html</i> has a class and if you select that form using that class, TypeScript will not be able to guess which type is the <i>form</i> constant.
+To solve this, you can use the <i>as</i> keyword to cast the type of <i>form</i>:
 ```ts
-let calc: (a: number, b: number, c: string) => number;
-
-calc = (numberOne: number, numberTwo: number, action: string) => {
-  if(action === 'add'){
-    return numberOne + numberTwo;
-  }else{
-    return numberOne - numberTwo;
-  }
-}
+const form = document.querySelector('.new-item-form') as HTMLFormElement;
 ```
-
-## Function signature with object
-You can define a function signature with an object:
+Here is a more complex example:
 ```ts
-let logDetails: (obj: {name: string, age: number}) => void;
+const form = document.querySelector('.new-item-form') as HTMLFormElement;
 
-logDetails = (ninja: {name: string, age: number}) => {
-  console.log(`${ninja.name} is ${ninja.age} years old`);
-}
-```
-You can also give this object a specific type and use this type on the function signature and declaration:
-```ts
-type person = {name: string, age: number};
+const type = document.querySelector('#type') as HTMLSelectElement;
+const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
+const details = document.querySelector('#details') as HTMLInputElement;
+const amount = document.querySelector('#amount') as HTMLInputElement;
 
-let logDetails: (obj: person) => void;
+form.addEventListener('submit', (e: Event) => {
+  e.preventDefault();
 
-logDetails = (ninja: person) => {
-  console.log(`${ninja.name} is ${ninja.age} years old`);
-}
+  console.log(
+    type.value,
+    tofrom.value,
+    details.value,
+    amount.valueAsNumber
+  );
+})
+
 ```
 
-## Function signature with optional parameters
-You can have a function signature with one or more optional parameters and they can appear or not on the function declaration:
-```ts
-let showCarDetails: (name: string, year: string, hasFourWheels?: boolean) => void;
-
-// This declaration works
-showCarDetails = (name: string, year: number) => {
-  console.log(`The ${name} was first produced in ${year}`);
-}
-
-// This declaration also works
-showCarDetails = (name: string, year: number, hasFourWheels?: boolean) => {
-  console.log(`The ${name} was first produced in ${year}`);
-  if(hasFourWheels){
-    console.log('It has four wheels.');
-  }else{
-    console.log('It doesn\'t has four wheels.');
-  }
-}
-```
-You can mix this all togheter and create code that is reusable and readable.
 ## 📦 More content
 
-If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #10 - Function Signatures](https://www.youtube.com/watch?v=TZNbzyY6hMU&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=10)
+If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #11 - The DOM & Type Casting](https://www.youtube.com/watch?v=hcuKd-Q_tP8&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=11)
 
 Back to the [main branch](https://github.com/Henrique-Peixoto/typescript-the-net-ninja).
