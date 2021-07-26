@@ -26,7 +26,7 @@ This tutorial is intended for people who are having their first contact with Typ
 7. [Better Workflow & tsconfig](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-7)</br>
 8. [Function Basics](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-8)</br>
 9. [Type Aliases](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-9)</br>
-10. [Function Signatures](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/pull/10)</br>
+10. [Function Signatures](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-10)</br>
 11. [The DOM & Type Casting](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-11)</br>
 12. [Classes](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-12)</br>
 
