@@ -1,57 +1,56 @@
-# TypeScript Tutorial #11 - The DOM & Type Casting
+# TypeScript Tutorial #12 - Classes
 
-## Exclamation point operator
-When you try to grab a DOM element and, for example, try to output one of it's properties, like this:
+## Classes
+When you create a class you have to initialize it's fields:
 ```ts
-const anchor = document.querySelector('a');
-
-console.log(anchor.href);
+class Invoice { 
+  client: string;
+  details: string;
+  amount: number;
+}
 ```
-TS will say:
->Object is possibly 'null'.ts(2531)
+>Property 'client' has no initializer and is not definitely assigned in the constructor.ts(2564)
+Here, the message is referencing the <i>client</i> field, but it could be any of the other fields.
 
-To explicity say to TS that you know that a variable is not null you can write a <i>exclamation point</i> after selecting a DOM element:
+Now, let's give this class a <i>constructor</i> and a <i>format</i> method and instanciate two <i>Invoice</i> objects:
 ```ts
-const anchor = document.querySelector('a')!;
-```
-If you hover over the <i>anchor</i> constant, you will see:
->onst anchor: HTMLAnchorElement
-TypeScript has a specific type for every HTML element.
+class Invoice {
+  client: string;
+  details: string;
+  amount: number;
 
-## Type Casting 
-On the <i>index.html</i> file there is a <i>form</i> element. If you select that element using:
+  constructor(c: string, d: string, a: number) {
+    this.client = c;
+    this.details = d;
+    this.amount = a;
+  }
+
+  format() {
+    return `${this.client} owes $${this.amount} for ${this.details}`;
+  }
+}
+
+const invOne = new Invoice('Tolkien','a new The Lord of the Rings book', 500);
+const invTwo = new Invoice('Martin','a new The Chronicles of Ice and Fire book', 300);
+```
+
+## Class as a type
+You can now say that an array can only receive elements from the <i>Invoice</i> class:
 ```ts
-const form = documento.querySelector('form');
+const invoices: Invoice[] = [];
+
+invoices.push(invOne);
+invoices.push(invTwo);
 ```
-TypeScript will know, because of type inference, that the <i>form</i> constant is a <i>HTMLFormElement</i>. But the form element on the <i>index.html</i> has a class and if you select that form using that class, TypeScript will not be able to guess which type is the <i>form</i> constant.
-To solve this, you can use the <i>as</i> keyword to cast the type of <i>form</i>:
+One thing you have to know is that the fields of the Invoice class are accessible outside of the class and can have their values changed for any instance of the Invoice class:
 ```ts
-const form = document.querySelector('.new-item-form') as HTMLFormElement;
+invOne.amount = 1000;
+intTwo.client = 'H.P. Lovecraft';
 ```
-Here is a more complex example:
-```ts
-const form = document.querySelector('.new-item-form') as HTMLFormElement;
-
-const type = document.querySelector('#type') as HTMLSelectElement;
-const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
-const details = document.querySelector('#details') as HTMLInputElement;
-const amount = document.querySelector('#amount') as HTMLInputElement;
-
-form.addEventListener('submit', (e: Event) => {
-  e.preventDefault();
-
-  console.log(
-    type.value,
-    tofrom.value,
-    details.value,
-    amount.valueAsNumber
-  );
-})
-
-```
+You will find out how to avoid this behavior in the next class.
 
 ## 📦 More content
 
-If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #11 - The DOM & Type Casting](https://www.youtube.com/watch?v=hcuKd-Q_tP8&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=11)
+If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #12 - Classes](https://www.youtube.com/watch?v=OsFwOzr3_sE&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=12)
 
 Back to the [main branch](https://github.com/Henrique-Peixoto/typescript-the-net-ninja).
