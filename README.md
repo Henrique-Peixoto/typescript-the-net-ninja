@@ -10,6 +10,7 @@ class Invoice {
 }
 ```
 >Property 'client' has no initializer and is not definitely assigned in the constructor.ts(2564)
+
 Here, the message is referencing the <i>client</i> field, but it could be any of the other fields.
 
 Now, let's give this class a <i>constructor</i> and a <i>format</i> method and instanciate two <i>Invoice</i> objects:
