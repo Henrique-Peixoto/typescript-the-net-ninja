@@ -5,7 +5,7 @@ A <i>function signature</i> is a way to explicitly say how many parameters and t
 ```ts
 let greet: (a: string, b: string) => void;
 ```
-Now, define a function within the pattern in <i>greet</i>.
+Now, define a function within the pattern <i>greet</i>.
 ```ts
 greet = (name: string, greeting: string) => {
   console.log(`${name} says ${greeting}`);
