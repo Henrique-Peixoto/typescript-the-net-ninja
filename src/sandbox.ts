@@ -1,23 +1,24 @@
-// Saying to TS that we know that a variable is not null
-const anchor = document.querySelector('a')!;
+// Classes
+class Invoice {
+  client: string;
+  details: string;
+  amount: number;
 
-console.log(anchor.href);
+  constructor(c: string, d: string, a: number) { 
+    this.client = c;
+    this.details = d;
+    this.amount = a;
+  }
 
-// Type casting
-const form = document.querySelector('.new-item-form') as HTMLFormElement;
+  format() {
+    return `${this.client} owes $${this.amount} for ${this.details}`;
+  }
+}
 
-const type = document.querySelector('#type') as HTMLSelectElement;
-const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
-const details = document.querySelector('#details') as HTMLInputElement;
-const amount = document.querySelector('#amount') as HTMLInputElement;
+const invOne = new Invoice('Tolkien','a new The Lord of the Rings book', 500);
+const invTwo = new Invoice('Martin','a new The Chronicles of Ice and Fire book', 300);
 
-form.addEventListener('submit', (e: Event) => {
-  e.preventDefault();
-
-  console.log(
-    type.value,
-    tofrom.value,
-    details.value,
-    amount.valueAsNumber
-  );
-})
+const invoices: Invoice[] = [];
+invoices.push(invOne);
+invoices.push(invTwo);
+console.log(invoices);
