@@ -31,6 +31,7 @@ This tutorial is intended for people who are having their first contact with Typ
 12. [Classes](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-12)</br>
 13. [Public, Private & Readonly](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-13)</br>
 14. [Modules](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-14)</br>
+15. [Interfaces](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-15)</br>
 
 ## 📝 License
 This repository is under the [MIT](LICENSE)
