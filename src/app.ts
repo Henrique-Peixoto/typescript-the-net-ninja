@@ -1,6 +1,27 @@
-import { Invoice } from './classes/Invoice.js';
+// Interfaces
+interface isPerson {
+  name: string;
+  age: number;
+  speak(a: string): void;
+  spend(a: number): number;
+}
 
-const invOne = new Invoice('Tolkien','a new The Lord of the Rings book', 500);
-const invTwo = new Invoice('Martin','a new The Chronicles of Ice and Fire book', 300);
+const me: isPerson = {
+  name: 'Henrique',
+  age: 21,
+  speak(text: string): void {
+    console.log(text);
+  },
+  spend(amount: number): number {
+    console.log('I spent ', amount);
+    return amount;
+  }
+}
 
-console.log(invOne, invTwo);
+let someone: isPerson;
+
+const greetPerson = (person: isPerson): void => {
+  console.log('Hello, ', person.name);
+}
+
+greetPerson(me);

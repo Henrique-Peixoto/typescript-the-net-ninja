@@ -1,4 +1,17 @@
-import { Invoice } from './classes/Invoice.js';
-const invOne = new Invoice('Tolkien', 'a new The Lord of the Rings book', 500);
-const invTwo = new Invoice('Martin', 'a new The Chronicles of Ice and Fire book', 300);
-console.log(invOne, invTwo);
+"use strict";
+const me = {
+    name: 'Henrique',
+    age: 21,
+    speak(text) {
+        console.log(text);
+    },
+    spend(amount) {
+        console.log('I spent ', amount);
+        return amount;
+    }
+};
+let someone;
+const greetPerson = (person) => {
+    console.log('Hello, ', person.name);
+};
+greetPerson(me);
