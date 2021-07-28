@@ -27,10 +27,10 @@ class Invoice {
 
 ...
 ```
-Being a public attribute means you can access and modify it's value from outside of the class.
+Being a public attribute means you can access and modify it's value from outside and inside of the class.
 
 ## Private
-You can only access <i>private</i> attributes from inside of the class (as the format method does, when it access the <i>details</i> attribute):
+You can only access <i>private</i> attributes within the class (as the format method does, when it access the <i>details</i> attribute):
 ```ts
 class Invoice {
   public client: string;
