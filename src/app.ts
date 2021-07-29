@@ -1,28 +1,27 @@
-import { Invoice } from "./classes/Invoice.js";
-import { ListTemplate } from "./classes/ListTemplate.js";
-import { Payment } from "./classes/Payment.js";
-import { HasFormatter } from "./interfaces/HasFormatter.js";
+// Generics
+const addUID = <T extends object>(obj: T) => {
+  let uid = Math.floor(Math.random() * 100);
+  return {...obj, uid};
+}
 
-// Form
-const form = document.querySelector('.new-item-form') as HTMLFormElement;
-// Inputs
-const type = document.querySelector('#type') as HTMLInputElement;
-const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
-const details = document.querySelector('#details') as HTMLInputElement;
-const amount = document.querySelector('#amount') as HTMLInputElement;
+let docOne = addUID({name: 'yoshi', age: 40});
+console.log(docOne.name);
 
-form.addEventListener('submit', (e: Event) => {
-  e.preventDefault();
+// With interfaces
+interface Resource<T> {
+  uid: number;
+  resourceName: string;
+  data: T;
+}
 
-  let doc: HasFormatter;
-  if(type.value === 'invoice'){
-    doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
-  }else{
-    doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
-  }
+const docFour: Resource<string> = {
+  uid: 1,
+  resourceName: 'its name',
+  data: '2021'
+};
 
-  const ul = document.querySelector('ul')!;
-  const list = new ListTemplate(ul);
-
-  list.render(doc, type.value, 'end');
-});
+const docFive: Resource<object> = {
+  uid: 2,
+  resourceName: 'another name',
+  data: {day: '29', year: '2021'}
+}

@@ -1,23 +1,18 @@
-import { Invoice } from "./classes/Invoice.js";
-import { ListTemplate } from "./classes/ListTemplate.js";
-import { Payment } from "./classes/Payment.js";
-// Form
-const form = document.querySelector('.new-item-form');
-// Inputs
-const type = document.querySelector('#type');
-const tofrom = document.querySelector('#tofrom');
-const details = document.querySelector('#details');
-const amount = document.querySelector('#amount');
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    let doc;
-    if (type.value === 'invoice') {
-        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
-    }
-    else {
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
-    }
-    const ul = document.querySelector('ul');
-    const list = new ListTemplate(ul);
-    list.render(doc, type.value, 'end');
-});
+"use strict";
+// Generics
+const addUID = (obj) => {
+    let uid = Math.floor(Math.random() * 100);
+    return Object.assign(Object.assign({}, obj), { uid });
+};
+let docOne = addUID({ name: 'yoshi', age: 40 });
+console.log(docOne.name);
+const docFour = {
+    uid: 1,
+    resourceName: 'its name',
+    data: '2021'
+};
+const docFive = {
+    uid: 2,
+    resourceName: 'another name',
+    data: { day: '29', year: '2021' }
+};
