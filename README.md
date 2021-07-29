@@ -34,6 +34,7 @@ This tutorial is intended for people who are having their first contact with Typ
 15. [Interfaces](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-15)</br>
 16. [Interfaces with Classes](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-16)</br>
 17. [Rendering an HTML Template](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-17)</br>
+18. [Generics](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-18)</br>
 
 ## 📝 License
 This repository is under the [MIT](LICENSE)
