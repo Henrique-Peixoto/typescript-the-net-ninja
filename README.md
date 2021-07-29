@@ -1,78 +1,91 @@
-# TypeScript Tutorial #17 - Rendering an HTML Template
-You will create a class that represents a <i>ul</i> in which the Invoices and Payments will be shown. See down below how this class looks like:
+# TypeScript Tutorial #18 - Generics
+
+## Generating a random UID
+Down below you can see a function that generates a random uid for a user:
 ```ts
-import { HasFormatter } from "../interfaces/HasFormatter.js";
+const addUID = (obj: object) => {
+  let uid = Math.floor(Math.random() * 100);
+  return {...obj, uid};
+}
 
-export class ListTemplate {
-  // Attributes of this class
-  constructor(
-    private container: HTMLUListElement
-  ){}
+const docOne = addUID({name: 'yoshi', age: 40});
+console.log(docOne.name);
+```
+At the end of the code you can see the <i>name</i> field of the <i>docOne</i> being consoled, but this doesn't work:
+>Property 'name' does not exist on type '{ uid: number; }'.ts(2339)
 
-  // The method responsable for creating a new 'li'
-  render(item: HasFormatter, itemHeading: string, itemPositionOnTheList: 'start' | 'end'){
-    // The 'li' have two elements: a title and it's inner text
-    const li = document.createElement('li');
-    // The 'li' title, wether it is an Invoice or a Payment
-    const h4 = document.createElement('h4');
-    h4.innerText = itemHeading;
-    li.append(h4);
+Because the object is not well defined, TS doesn't know which fields are in the object.
 
-    // The 'li' inner text
-    const p = document.createElement('p');
-    p.innerText = item.format();
-    li.append(p);
+## Using generics
+To solve this, you can use <i>generics</i>. Let's see a code snippet and detail what is going on:
+```ts
+const addUID = <T>(obj: T) => {
+  let uid = Math.floor(Math.random() * 100);
+  return {...obj, uid};
+}
 
-    // Selecting where to put the new 'li'
-    if(itemPositionOnTheList === 'start'){
-      this.container.prepend(li);
-    }else{
-      this.container.append(li);
-    }
-  }
+const docOne = addUID({name: 'yoshi', age: 40});
+console.log(docOne.name);
+```
+The only difference between this version of <i>addUID</i> and the previous one is the <i><T>(obj: T)</i>. The <i><T></i> captures the passed object to the function and now TS knows what are the fields of this object, so this time the <i>console.log</i> gives no error. The generic can be used with any other type, not only objects.
+
+## Making generics more specific
+If you pass a string to <i>addUID</i>, TS will say nothing, even though it doesn't make any sense to pass it a string. To go around this, you can <i>extend</i> a generics:
+```ts
+const addUID = <T extends object>(obj: T) => {
+  let uid = Math.floor(Math.random() * 100);
+  return {...obj, uid};
+}
+
+const docOne = addUID('hello');
+``` 
+Now, trying to pass the string <i>hello</i> to <i>addUID</i> will generate an error:
+>Argument of type 'string' is not assignable to parameter of type 'object'.ts(2345)
+
+## Making generics even more specific
+To extend a generic to an even more specific object, you can write:
+```ts
+const addUID = <T extends {name: string}>(obj: T) => {
+  let uid = Math.floor(Math.random() * 100);
+  return {...obj, uid};
+}
+
+// Valid 
+const docOne = addUID({name: 'yohsi', age: 40});
+// Invalid
+const docTwo = addUID({name: 40, age: 40});
+const docThree = addUID({age: 40});
+```
+The <i>addUID</i> function only accepts objects that contain a field called <i>name</i> which is of type <i>string</i>.
+
+## Generics with interfaces
+If you have to pass to an interface a generic, you can do so as follows:
+```ts
+interface Resource<T> {
+  uid: number;
+  resourceName: string;
+  data: T;
+}
+
+const docFour: Resource<string>;
+docFour = {
+  uid: 1,
+  resourceName: 'its name',
+  data: '2021'
+}
+
+const docFive: Resource<object> = {
+  uid: 2,
+  resourceName: 'another name',
+  data: {day: '29', year: '2021'}
 }
 ```
-Now, on the app.ts, create the following structure. Every time you fill out the form and press 'Add' a new element will be added to the list:
-```ts
-import { Invoice } from "./classes/Invoice.js";
-import { ListTemplate } from "./classes/ListTemplate.js";
-import { Payment } from "./classes/Payment.js";
-import { HasFormatter } from "./interfaces/HasFormatter.js";
+You can pass any type you want to <i>T</i>.
 
-// Form
-const form = document.querySelector('.new-item-form') as HTMLFormElement;
-// Inputs withing the form
-const type = document.querySelector('#type') as HTMLInputElement;
-const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
-const details = document.querySelector('#details') as HTMLInputElement;
-const amount = document.querySelector('#amount') as HTMLInputElement;
-
-// Adding a event to the form
-form.addEventListener('submit', (e: Event) => {
-  // The default behavior of the 'submit' event is to refresh the page, so prevent that to happen
-  e.preventDefault();
-
-  // Selecting wether the doc is an Invoice or a Payment
-  let doc: HasFormatter;
-  if(type.value === 'invoice'){
-    doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
-  }else{
-    doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
-  }
-
-  // Selection the 'ul' that is on the index.html
-  const ul = document.querySelector('ul')!;
-  const list = new ListTemplate(ul);
-
-  // Passing the arguments to the render function (defined in the ListTemplate class)
-  list.render(doc, type.value, 'end');
-});
-
-```
-Go on and run the index.html with LiveServer and try to add some items.
+Why <i>T</i>? Well, the community uses it as a default, actually you can give it any name you want, although, <i>T</i> is the recommended name. You can think of it as "type".
 
 ## 📦 More content
 
-If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #17 - Rendering an HTML Template](https://www.youtube.com/watch?v=X-mUYxLjqLY&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=17).
+If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #18 - Generics](https://www.youtube.com/watch?v=IOzkOXSz9gE&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=18).
 
 Back to the [main branch](https://github.com/Henrique-Peixoto/typescript-the-net-ninja).
