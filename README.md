@@ -1,63 +1,78 @@
-# TypeScript Tutorial #16 - Interfaces with Classes
-You can create interfaces into separated files and export then. Create the folder <i>interfaces</i> inside the <i>src</i> folder and inside the <i>interfaces</i> folder create the file <i>HasFormatter.ts</i> and write the following content:
+# TypeScript Tutorial #17 - Rendering an HTML Template
+You will create a class that represents a <i>ul</i> in which the Invoices and Payments will be shown. See down below how this class looks like:
 ```ts
-export interface HasFormatter {
-  format(): string;
-}
-```
-To use this interface in a class, you have to explicitly say that a certain class is using a certain interface. In this example the class <i>Invoice</i> is using the <i>HasFormatter</i> interface:
-```ts
-import { HasFormatter } from '../interfaces/HasFormatter.js';
+import { HasFormatter } from "../interfaces/HasFormatter.js";
 
-export class Invoice implements HasFomatter {
+export class ListTemplate {
+  // Attributes of this class
   constructor(
-    readonly client: string,
-    private details: string,
-    public amount: number
+    private container: HTMLUListElement
   ){}
 
-  format() {
-    return `${this.client} owes $${this.amount} for ${this.details}`;
+  // The method responsable for creating a new 'li'
+  render(item: HasFormatter, itemHeading: string, itemPositionOnTheList: 'start' | 'end'){
+    // The 'li' have two elements: a title and it's inner text
+    const li = document.createElement('li');
+    // The 'li' title, wether it is an Invoice or a Payment
+    const h4 = document.createElement('h4');
+    h4.innerText = itemHeading;
+    li.append(h4);
+
+    // The 'li' inner text
+    const p = document.createElement('p');
+    p.innerText = item.format();
+    li.append(p);
+
+    // Selecting where to put the new 'li'
+    if(itemPositionOnTheList === 'start'){
+      this.container.prepend(li);
+    }else{
+      this.container.append(li);
+    }
   }
 }
 ```
-If you comment the <i>format</i> method, TS will complain:
->Class 'Invoice' incorrectly implements interface 'HasFormatter'.
->  Property 'format' is missing in type 'Invoice' but required in type 'HasFormatter'.ts(2420)
->HasFormatter.ts(2, 3): 'format' is declared here.
-
-Now, create a second class called <i>Payment</i> that also uses the <i>HasFormatter</i> interface:
+Now, on the app.ts, create the following structure. Every time you fill out the form and press 'Add' a new element will be added to the list:
 ```ts
-import { HasFormatter } from '../interfaces/HasFormatter';
+import { Invoice } from "./classes/Invoice.js";
+import { ListTemplate } from "./classes/ListTemplate.js";
+import { Payment } from "./classes/Payment.js";
+import { HasFormatter } from "./interfaces/HasFormatter.js";
 
-export class Payment implements HasFormatter {
-  constructor(
-    readonly recipient: string,
-    private details: string,
-    public amount: number
-  ){}
+// Form
+const form = document.querySelector('.new-item-form') as HTMLFormElement;
+// Inputs withing the form
+const type = document.querySelector('#type') as HTMLInputElement;
+const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
+const details = document.querySelector('#details') as HTMLInputElement;
+const amount = document.querySelector('#amount') as HTMLInputElement;
 
-  format() {
-    return `${this.recipient} is owed $${this.amount} for ${this.details}`;
+// Adding a event to the form
+form.addEventListener('submit', (e: Event) => {
+  // The default behavior of the 'submit' event is to refresh the page, so prevent that to happen
+  e.preventDefault();
+
+  // Selecting wether the doc is an Invoice or a Payment
+  let doc: HasFormatter;
+  if(type.value === 'invoice'){
+    doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+  }else{
+    doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
   }
-}
-```
-With the <i>HasFormatter</i> interface you can declare a variable to obey this interface and instansiate a <i>Payment</i> or <i>Invoice</i> object or even say that an array can only receive variables that obey the <i>HasFormatter</i> interface:
-```ts
-// Variable of HasFormatter
-let docOne: HasFormatter;
-let docTwo: HasFormatter;
 
-docOne = 'hello';
+  // Selection the 'ul' that is on the index.html
+  const ul = document.querySelector('ul')!;
+  const list = new ListTemplate(ul);
 
-// An array of HasFormatter
-let docs: HasFormatter[] = [];
+  // Passing the arguments to the render function (defined in the ListTemplate class)
+  list.render(doc, type.value, 'end');
+});
+
 ```
-If you try to assign to <i>docOne</i> or <i>docTwo</i> a value that is not of type <i>HasFormatter</i>, TS will say:
->Type 'string' is not assignable to type 'HasFormatter'.ts(2322)
+Go on and run the index.html with LiveServer and try to add some items.
 
 ## 📦 More content
 
-If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #16 - Interfaces with Classes](https://www.youtube.com/watch?v=XPGFqx8Vg-Y&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=16).
+If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #17 - Rendering an HTML Template](https://www.youtube.com/watch?v=X-mUYxLjqLY&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=17).
 
 Back to the [main branch](https://github.com/Henrique-Peixoto/typescript-the-net-ninja).
