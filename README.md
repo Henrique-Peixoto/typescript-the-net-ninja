@@ -36,6 +36,7 @@ This tutorial is intended for people who are having their first contact with Typ
 17. [Rendering an HTML Template](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-17)</br>
 18. [Generics](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-18)</br>
 19. [Enums](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-19)</br>
+20. [Tuples](https://github.com/Henrique-Peixoto/typescript-the-net-ninja/tree/lesson-20)</br>
 
 ## 📝 License
 This repository is under the [MIT](LICENSE)
