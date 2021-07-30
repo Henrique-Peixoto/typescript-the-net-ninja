@@ -1,40 +1,37 @@
+// Basic use of tuples
+let tup: [string, number, boolean] = ['Frodo', 1, true];
+// tup = [2, false, 'Sam'];
 
-// interface Resource<T> {
-//   uid: number;
-//   resourceName: string;
-//   data: T;
-// }
+// Using tuples on the project
+import { Invoice } from "./classes/Invoice.js";
+import { ListTemplate } from "./classes/ListTemplate.js";
+import { Payment } from "./classes/Payment.js";
+import { HasFormatter } from "./interfaces/HasFormatter.js";
 
-// const docFour: Resource<string> = {
-//   uid: 1,
-//   resourceName: 'its name',
-//   data: '2021'
-// };
+// Form
+const form = document.querySelector('.new-item-form') as HTMLFormElement;
+// Inputs
+const type = document.querySelector('#type') as HTMLInputElement;
+const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
+const details = document.querySelector('#details') as HTMLInputElement;
+const amount = document.querySelector('#amount') as HTMLInputElement;
 
-// const docFive: Resource<object> = {
-//   uid: 2,
-//   resourceName: 'another name',
-//   data: {day: '29', year: '2021'}
-// }
+form.addEventListener('submit', (e: Event) => {
+  e.preventDefault();
 
-enum ResourceType { BOOK, AUTHOR, FILM, DIRECTOR, PERSON };
+  // Using tuples here
+  let values: [string, string, number];
+  values = [tofrom.value, details.value, amount.valueAsNumber];
 
-interface Resource<T> {
-  uid: number;
-  resourceName: ResourceType;
-  data: T;
-}
+  let doc: HasFormatter;
+  if(type.value === 'invoice'){
+    doc = new Invoice(...values);
+  }else{
+    doc = new Payment(...values);
+  }
 
-const docOne: Resource<string> = {
-  uid: 0,
-  resourceName: ResourceType.BOOK,
-  data: 'today'
-}
+  const ul = document.querySelector('ul')!;
+  const list = new ListTemplate(ul);
 
-const docTwo: Resource<object> = {
-  uid: 1,
-  resourceName: ResourceType.PERSON,
-  data: {day: '30', year: '2021'}
-}
-
-console.log(docOne, docTwo);
+  list.render(doc, type.value, 'end');
+});
