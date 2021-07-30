@@ -1,4 +1,6 @@
 # TypeScript Tutorial #16 - Interfaces with Classes
+
+## Classes using interfaces
 You can create interfaces into separated files and export then. Create the folder <i>interfaces</i> inside the <i>src</i> folder and inside the <i>interfaces</i> folder create the file <i>HasFormatter.ts</i> and write the following content:
 ```ts
 export interface HasFormatter {
@@ -42,12 +44,16 @@ export class Payment implements HasFormatter {
   }
 }
 ```
+
+## More use cases
+
 With the <i>HasFormatter</i> interface you can declare a variable to obey this interface and instansiate a <i>Payment</i> or <i>Invoice</i> object or even say that an array can only receive variables that obey the <i>HasFormatter</i> interface:
 ```ts
 // Variable of HasFormatter
 let docOne: HasFormatter;
 let docTwo: HasFormatter;
 
+// Trying to assigne a string to docOne
 docOne = 'hello';
 
 // An array of HasFormatter
