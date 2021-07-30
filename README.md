@@ -27,7 +27,7 @@ const addUID = <T>(obj: T) => {
 const docOne = addUID({name: 'yoshi', age: 40});
 console.log(docOne.name);
 ```
-The only difference between this version of <i>addUID</i> and the previous one is the <i><T>(obj: T)</i>. The <i><T></i> captures the passed object to the function and now TS knows what are the fields of this object, so this time the <i>console.log</i> gives no error. The generic can be used with any other type, not only objects.
+The only difference between this version of <i>addUID</i> and the previous one is the <i>\<T\>(obj: T)</i>. The <i>\<T\></i> captures the passed object to the function and now TS knows what are the fields of this object, so this time the <i>console.log</i> gives no error. The generic can be used with any other type, not only objects.
 
 ## Making generics more specific
 If you pass a string to <i>addUID</i>, TS will say nothing, even though it doesn't make any sense to pass it a string. To go around this, you can <i>extend</i> a generics:
