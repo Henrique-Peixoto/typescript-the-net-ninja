@@ -41,13 +41,13 @@ import { HasFormatter } from "./interfaces/HasFormatter.js";
 
 // Form
 const form = document.querySelector('.new-item-form') as HTMLFormElement;
-// Inputs withing the form
+// Inputs within the form
 const type = document.querySelector('#type') as HTMLInputElement;
 const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
 const details = document.querySelector('#details') as HTMLInputElement;
 const amount = document.querySelector('#amount') as HTMLInputElement;
 
-// Adding a event to the form
+// Adding an event to the form
 form.addEventListener('submit', (e: Event) => {
   // The default behavior of the 'submit' event is to refresh the page, so prevent that to happen
   e.preventDefault();
@@ -60,7 +60,7 @@ form.addEventListener('submit', (e: Event) => {
     doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
   }
 
-  // Selection the 'ul' that is on the index.html
+  // Selecting the 'ul' that is on the index.html
   const ul = document.querySelector('ul')!;
   const list = new ListTemplate(ul);
 
