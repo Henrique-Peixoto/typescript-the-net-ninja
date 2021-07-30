@@ -1,18 +1,36 @@
 "use strict";
-// Generics
-const addUID = (obj) => {
-    let uid = Math.floor(Math.random() * 100);
-    return Object.assign(Object.assign({}, obj), { uid });
+// interface Resource<T> {
+//   uid: number;
+//   resourceName: string;
+//   data: T;
+// }
+// const docFour: Resource<string> = {
+//   uid: 1,
+//   resourceName: 'its name',
+//   data: '2021'
+// };
+// const docFive: Resource<object> = {
+//   uid: 2,
+//   resourceName: 'another name',
+//   data: {day: '29', year: '2021'}
+// }
+var ResourceType;
+(function (ResourceType) {
+    ResourceType[ResourceType["BOOK"] = 0] = "BOOK";
+    ResourceType[ResourceType["AUTHOR"] = 1] = "AUTHOR";
+    ResourceType[ResourceType["FILM"] = 2] = "FILM";
+    ResourceType[ResourceType["DIRECTOR"] = 3] = "DIRECTOR";
+    ResourceType[ResourceType["PERSON"] = 4] = "PERSON";
+})(ResourceType || (ResourceType = {}));
+;
+const docOne = {
+    uid: 0,
+    resourceName: ResourceType.BOOK,
+    data: 'today'
 };
-let docOne = addUID({ name: 'yoshi', age: 40 });
-console.log(docOne.name);
-const docFour = {
+const docTwo = {
     uid: 1,
-    resourceName: 'its name',
-    data: '2021'
+    resourceName: ResourceType.PERSON,
+    data: { day: '30', year: '2021' }
 };
-const docFive = {
-    uid: 2,
-    resourceName: 'another name',
-    data: { day: '29', year: '2021' }
-};
+console.log(docOne, docTwo);

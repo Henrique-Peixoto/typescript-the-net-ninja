@@ -1,27 +1,40 @@
-// Generics
-const addUID = <T extends object>(obj: T) => {
-  let uid = Math.floor(Math.random() * 100);
-  return {...obj, uid};
-}
 
-let docOne = addUID({name: 'yoshi', age: 40});
-console.log(docOne.name);
+// interface Resource<T> {
+//   uid: number;
+//   resourceName: string;
+//   data: T;
+// }
 
-// With interfaces
+// const docFour: Resource<string> = {
+//   uid: 1,
+//   resourceName: 'its name',
+//   data: '2021'
+// };
+
+// const docFive: Resource<object> = {
+//   uid: 2,
+//   resourceName: 'another name',
+//   data: {day: '29', year: '2021'}
+// }
+
+enum ResourceType { BOOK, AUTHOR, FILM, DIRECTOR, PERSON };
+
 interface Resource<T> {
   uid: number;
-  resourceName: string;
+  resourceName: ResourceType;
   data: T;
 }
 
-const docFour: Resource<string> = {
-  uid: 1,
-  resourceName: 'its name',
-  data: '2021'
-};
-
-const docFive: Resource<object> = {
-  uid: 2,
-  resourceName: 'another name',
-  data: {day: '29', year: '2021'}
+const docOne: Resource<string> = {
+  uid: 0,
+  resourceName: ResourceType.BOOK,
+  data: 'today'
 }
+
+const docTwo: Resource<object> = {
+  uid: 1,
+  resourceName: ResourceType.PERSON,
+  data: {day: '30', year: '2021'}
+}
+
+console.log(docOne, docTwo);
