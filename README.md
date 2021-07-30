@@ -1,54 +1,61 @@
-# TypeScript Tutorial #19 - Enums
+# TypeScript Tutorial #20 - Tuples
 
-## Interfaces without enums
-On the last class you saw the use of <i>generics</i>. But it can become quite confusing to use generics too many types:
+## Basic use of tuples
+Tuples are used alongside with arrays:
 ```ts
-interface Resource<T> {
-  uid: number;
-  resourceName: number;
-  data: T;
-}
+let tup: [string, number, boolean] = ['Frodo', 1, true];
 
-const docOne: Resource<string> = {
-  uid: 0,
-  resourceName: 0,
-  data: 'today'
-}
+// Valid 
+tup = ['Sam', 2, false];
 
-const docTwo: Resource<object> = {
-  uid: 1
-  resourceName: 4,
-  data: {day: '30', year: '2021'}
-}
+// Invalid
+tup = [2, false, 'Sam'];
 ```
+You can only change a value for another value of the same type.
 
-## Interfaces with enums
-As you keep creating these <i>docs<i>, it starts to become hard to remember which type <i>0</i> or <i>1</i> refer to. To go around this issue you can use <i>enums</i>:
+## Using tuples on the project
+Instead of passing each value individualy to the Invoice and Payment object, use a tuple to be able to use the spread operator:
 ```ts
-enum ResourceType { BOOK, AUTHOR, FILM, DIRECTOR, PERSON };
+// Using tuples on the project
+import { Invoice } from "./classes/Invoice.js";
+import { ListTemplate } from "./classes/ListTemplate.js";
+import { Payment } from "./classes/Payment.js";
+import { HasFormatter } from "./interfaces/HasFormatter.js";
 
-interface Resource<T> {
-  uid: number;
-  resourceType: ResourceType;
-  data: T;
-}
+// Form
+const form = document.querySelector('.new-item-form') as HTMLFormElement;
+// Inputs
+const type = document.querySelector('#type') as HTMLInputElement;
+const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
+const details = document.querySelector('#details') as HTMLInputElement;
+const amount = document.querySelector('#amount') as HTMLInputElement;
 
-const docOne: Resource<string> = {
-  uid: 0,
-  resourceType: ResourceType.BOOK,
-  data: 'today'
-}
+form.addEventListener('submit', (e: Event) => {
+  e.preventDefault();
 
-const docTwo: Resource<object> = {
-  uid: 1,
-  resourceType: ResourceType.PERSON,
-  data: {day: '30', year: '2021'}
-}
+  // Using tuples here
+  let values: [string, string, number];
+  values = [tofrom.value, details.value, amount.valueAsNumber];
+
+  let doc: HasFormatter;
+  // Using the spread operatos
+  if(type.value === 'invoice'){
+    doc = new Invoice(...values);
+  }else{
+    doc = new Payment(...values);
+  }
+
+  const ul = document.querySelector('ul')!;
+  const list = new ListTemplate(ul);
+
+  list.render(doc, type.value, 'end');
+});
 ```
-If console <i>docOne</i> and <i>docTwo</i> you will see that the <i>ResourceType.RESOURCE_NAME</i> becames a string.
+TypeScript doesn't know the type of whatever is inside <i>values</i> if you just use the spread operator without using a tuple.
+
 
 ## 📦 More content
 
-If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #19 - Enums](https://www.youtube.com/watch?v=r8G7-hQG07o&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=19).
+If you want a video of this tutorial, check the one made by The Net Ninja: [TypeScript Tutorial #20 - Tuples](https://www.youtube.com/watch?v=tHSstkiVbc8&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=20).
 
 Back to the [main branch](https://github.com/Henrique-Peixoto/typescript-the-net-ninja).
