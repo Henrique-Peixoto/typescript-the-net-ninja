@@ -1,7 +1,7 @@
 # TypeScript Tutorial #19 - Enums
 
 ## Interfaces without enums
-On the last class you saw the use of <i>generics</i>. But it can become quite confusing to use generics too many types:
+On the last class you saw the use of <i>generics</i>. But it can become quite confusing to use generics too many times:
 ```ts
 interface Resource<T> {
   uid: number;
@@ -23,7 +23,7 @@ const docTwo: Resource<object> = {
 ```
 
 ## Interfaces with enums
-As you keep creating these <i>docs<i>, it starts to become hard to remember which type <i>0</i> or <i>1</i> refer to. To go around this issue you can use <i>enums</i>:
+As you keep creating these <i>docs</i>, it starts to become hard to remember which type <i>0</i> or <i>1</i> refers to. To go around this issue you can use <i>enums</i>:
 ```ts
 enum ResourceType { BOOK, AUTHOR, FILM, DIRECTOR, PERSON };
 
@@ -45,7 +45,7 @@ const docTwo: Resource<object> = {
   data: {day: '30', year: '2021'}
 }
 ```
-If console <i>docOne</i> and <i>docTwo</i> you will see that the <i>ResourceType.RESOURCE_NAME</i> becames a string.
+If you console <i>docOne</i> and <i>docTwo</i> you will see that the <i>ResourceType.RESOURCE_NAME</i> becomes a number.
 
 ## 📦 More content
 
