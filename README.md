@@ -14,7 +14,7 @@ tup = [2, false, 'Sam'];
 You can only change a value for another value of the same type.
 
 ## Using tuples on the project
-Instead of passing each value individualy to the Invoice and Payment object, use a tuple to be able to use the spread operator:
+Instead of passing each value individualy to the Invoice and Payment class, use a tuple to be able to use the spread operator:
 ```ts
 // Using tuples on the project
 import { Invoice } from "./classes/Invoice.js";
